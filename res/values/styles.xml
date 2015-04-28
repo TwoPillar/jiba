@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="tab_item_text_style">
+        <item name="android:textSize">10.0dip</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:ellipsize">marquee</item>       
+        <item name="android:singleLine">true</item>
+    </style>
+    
+    <style name="tab_item_background">
+    	<item name="android:textAppearance">@style/tab_item_text_style</item>   	
+        <item name="android:gravity">center_horizontal</item>  
+        <item name="android:background">@drawable/selector_tab_background2</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>         
+        <item name="android:drawablePadding">3.0dip</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    
+    <style name="btn_style">
+    	<item name="android:layout_width">fill_parent</item>
+    	<item name="android:layout_height">wrap_content</item>
+    	<item name="android:background">@drawable/selector_btn</item>
+    	<item name="android:padding">10dp</item>
+    	
+    </style>
+    
+    <style name="Animation">
+
+    	<item name="android:activityOpenEnterAnimation">@anim/translucent_enter</item>  
+        <item name="android:activityOpenExitAnimation">@anim/translucent_exit</item>  
+        <item name="android:activityCloseEnterAnimation">@anim/translucent_enter</item>  
+        <item name="android:activityCloseExitAnimation">@anim/translucent_exit</item>  
+        
+<!--        <item name="android:taskOpenEnterAnimation">@null</item>-->
+<!--        <item name="android:taskOpenExitAnimation">@null</item>-->
+<!--        <item name="android:taskCloseEnterAnimation">@null</item>-->
+<!--        <item name="android:taskCloseExitAnimation">@null</item>-->
+<!---->
+<!--        <item name="android:taskToFrontEnterAnimation">@null</item>-->
+<!--        <item name="android:taskToFrontExitAnimation">@null</item>-->
+<!--        <item name="android:taskToBackEnterAnimation">@null</item>-->
+<!--        <item name="android:taskToBackExitAnimation">@null</item>-->
+    </style>
+    
+    <style name="AnimationTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/Animation</item>
+    </style>
+
+</resources>
