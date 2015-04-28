@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/tv_plan"
+        android:id="@+id/bt_plan"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginTop="120dp"

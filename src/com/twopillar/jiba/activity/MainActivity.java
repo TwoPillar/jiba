@@ -1,4 +1,4 @@
-package com.twopillar.jiba.fragment;
+package com.twopillar.jiba.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +9,9 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.twopillar.jiba.R;
+import com.twopillar.jiba.fragment.ActionFragment;
+import com.twopillar.jiba.fragment.MusicFragment;
+import com.twopillar.jiba.fragment.PlanFragment;
 
 public class MainActivity extends FragmentActivity{
 
