@@ -14,5 +14,26 @@
         android:text="制定计划"
         android:gravity="center"> 
     </Button>
+    
+    <Button
+        android:id="@+id/bt_start"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        android:text="开始"
+        android:gravity="center"
+        android:visibility="gone"> 
+    </Button>
+    
+    <TextView 
+         android:id="@+id/tv_rest"
+         android:layout_width="100dp"
+         android:layout_height="60dp"
+         android:layout_marginTop="120dp"
+         android:layout_centerHorizontal="true"
+         android:text="今日休息"
+         android:gravity="center"
+         android:visibility="gone"/>"
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.twopillar.jiba.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -23,17 +24,16 @@ public class MainActivity extends FragmentActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_fragment_tabs);
-
-		init();
+		Log.v("jiba", "11111");
+		initView();
 	}
 
-	private void init()
+	private void initView()
 	{
 		mTabHost = (FragmentTabHost)this.findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		mTabHost.getTabWidget().setVisibility(View.GONE);
 		for(int i=0;i<tabs.length;i++){
-//			View tabView = this.getLayoutInflater().inflate(R.layout.tab_indicator, null);
 			mTabHost.addTab(mTabHost.newTabSpec(tabs[i]).setIndicator(tabs[i]),cls[i], null);
 		}
 		m_radioGroup = (RadioGroup) findViewById(R.id.main_radiogroup);
