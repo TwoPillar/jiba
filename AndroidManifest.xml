@@ -9,7 +9,7 @@
         android:targetSdkVersion="19" />
 
     <application
-        android:name="org.litepal.LitePalApplication"  
+        android:name="com.twopillar.jiba.common.JBAppliction"  
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -23,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name="com.twopillar.jiba.activity.MyInfoActivity"/>
+        <activity 
+            android:name="com.twopillar.jiba.activity.ActionDetailActivity"/>
     </application>
 
 </manifest>

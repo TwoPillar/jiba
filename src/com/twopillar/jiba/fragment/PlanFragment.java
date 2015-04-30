@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.twopillar.jiba.R;
+import com.twopillar.jiba.activity.MyInfoActivity;
 import com.twopillar.jiba.model.Plan;
 import com.twopillar.jiba.model.PlanDays;
 import com.twopillar.jiba.util.DateUtil;
@@ -52,17 +53,17 @@ public class PlanFragment extends Fragment {
 		bt_start = (Button)layoutView.findViewById(R.id.bt_start);
 		tv_rest = (TextView)layoutView.findViewById(R.id.tv_rest);
 		switch (planFlag) {
-		case 1:
+		case 1://制定计划
 			bt_plan.setVisibility(View.VISIBLE);
 			bt_start.setVisibility(View.GONE);
 			tv_rest.setVisibility(View.GONE);
 			break;	
-		case 2:
+		case 2://开始训练
 			bt_start.setVisibility(View.VISIBLE);
 			bt_plan.setVisibility(View.GONE);
 			tv_rest.setVisibility(View.GONE);
 			break;
-		case 3:	
+		case 3://休息
 			tv_rest.setVisibility(View.VISIBLE);
 			bt_start.setVisibility(View.GONE);
 			bt_plan.setVisibility(View.GONE);
@@ -76,21 +77,32 @@ public class PlanFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), MyInfoActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		bt_start.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
 				Intent intent = new Intent();
+				
 			}
 		});
 	}
 	
 	public void initData() {
 		Connector.getDatabase();
-		List<Plan> plans = DataSupport.findAll(Plan.class);
+		List<Plan> plans = DataSupport.findAll(Plan.class);//查询是否有计划，如果没有则为制定计划
 		if(plans.isEmpty()) {//
 			planFlag = 1;
 		}else {
-			List<Plan> StartPlan = DataSupport.where("start = ?","1").find(Plan.class);
+			List<Plan> StartPlan = DataSupport.where("start = ?","1").find(Plan.class);//查询启动的计划
 			int planId = StartPlan.get(0).getId();
 			int day = DateUtil.getWeekOfDate(new Date());
-			List<PlanDays> planDays = DataSupport.where("day = ? and plan_id = ?",String.valueOf(day),String.valueOf(planId)).find(PlanDays.class);
+			List<PlanDays> planDays = DataSupport.where("day = ? and plan_id = ?",String.valueOf(day),String.valueOf(planId))
+											  	 .find(PlanDays.class);//查询当前日期所对应的计划明细
 			if(planDays.get(0).getType() == "ACTION") {
 				planFlag = 2;
 			}
