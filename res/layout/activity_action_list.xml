@@ -4,6 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 	
+    <include 
+        android:id="@+id/include_title"
+        layout="@layout/default_title"/>
+    
 	<ListView
 	    android:id="@+id/lv_actionList"
 	    android:layout_width="match_parent"

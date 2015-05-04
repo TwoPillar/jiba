@@ -36,11 +36,13 @@ public class ActionFragment extends Fragment implements OnClickListener{
 		case R.id.bt_thorax:
 			intent = new Intent(getActivity(), ActionListActivity.class);
 			intent.putExtra("actionType", "thorax");
+			intent.putExtra("title", "胸部");
 			startActivity(intent);	
 			break;
 		case R.id.bt_shoulder:
 			intent = new Intent(getActivity(), ActionListActivity.class);
 			intent.putExtra("actionType", "shoulder");
+			intent.putExtra("title", "肩部");
 			startActivity(intent);	
 			break;
 		default:

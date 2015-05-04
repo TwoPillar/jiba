@@ -12,10 +12,12 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,12 +36,19 @@ public class ActionListActivity extends Activity{
 	
 	private String actionType;//动作类型
 	
+	private ImageButton ibt_back;//返回
+	
+	private TextView tv_title;//标题
+	
+	private String title;//标题名
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_action_list);
 		Intent intent = getIntent();
 		actionType = intent.getStringExtra("actionType");
+		title = intent.getStringExtra("title");
 		initView();
 		initData();
 		setListener();
@@ -47,6 +56,9 @@ public class ActionListActivity extends Activity{
 	
 	private void initView() {
 		lv_actionList = (ListView)findViewById(R.id.lv_actionList);
+		ibt_back = (ImageButton)findViewById(R.id.ibt_back);
+		tv_title = (TextView)findViewById(R.id.tv_title);
+		tv_title.setText(title);
 	}
 	
 	private void initData() {
@@ -64,8 +76,17 @@ public class ActionListActivity extends Activity{
 				Action action = actions.get(position);
 				Intent intent = new Intent(ActionListActivity.this,ActionDetailActivity.class);
 				intent.putExtra("imgPath", action.getImgPath());
+				intent.putExtra("title", action.getActionName());
 				intent.putExtra("description", action.getDescription());
 				startActivity(intent);
+			}
+		});
+		
+		ibt_back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				finish();				
 			}
 		});
 	}
