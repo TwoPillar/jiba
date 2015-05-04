@@ -17,4 +17,16 @@
     android:text="胸肌"
     android:textColor="#FFFFFF"/>
 
+<Button
+    android:id="@+id/bt_shoulder"
+    android:layout_width="110dp"
+    android:layout_height="80dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="19dp"
+    android:background="#C69528"
+    android:text="三角肌"
+    android:textColor="#FFFFFF" />
+
 </RelativeLayout>
