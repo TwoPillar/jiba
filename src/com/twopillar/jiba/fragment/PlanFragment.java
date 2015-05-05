@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.twopillar.jiba.R;
@@ -26,13 +27,11 @@ public class PlanFragment extends Fragment {
 	
 	private View layoutView;
 	
-	private Button bt_plan;//制定计划
-	
-	private Button bt_start;//开始
-	
-	private TextView tv_rest;//休息
+	private TextView tv_plan_type;//计划类型
 	
 	private int planFlag;//1制定计划，2开始训练，3休息
+	
+	private RelativeLayout rl_plan;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,45 +48,31 @@ public class PlanFragment extends Fragment {
 	}
 	
 	public void initView() {
-		bt_plan = (Button)layoutView.findViewById(R.id.bt_plan);
-		bt_start = (Button)layoutView.findViewById(R.id.bt_start);
-		tv_rest = (TextView)layoutView.findViewById(R.id.tv_rest);
+		rl_plan = (RelativeLayout)layoutView.findViewById(R.id.rl_plan);
+		tv_plan_type = (TextView)layoutView.findViewById(R.id.tv_plan_type);
 		switch (planFlag) {
 		case 1://制定计划
-			bt_plan.setVisibility(View.VISIBLE);
-			bt_start.setVisibility(View.GONE);
-			tv_rest.setVisibility(View.GONE);
+			tv_plan_type.setText("制定计划");
 			break;	
 		case 2://开始训练
-			bt_start.setVisibility(View.VISIBLE);
-			bt_plan.setVisibility(View.GONE);
-			tv_rest.setVisibility(View.GONE);
+			tv_plan_type.setText("开始训练");
 			break;
 		case 3://休息
-			tv_rest.setVisibility(View.VISIBLE);
-			bt_start.setVisibility(View.GONE);
-			bt_plan.setVisibility(View.GONE);
+			tv_plan_type.setText("休息");
 			break;
 		}
 	}
 	
 	public void setListener() {
 		
-		bt_plan.setOnClickListener(new OnClickListener() {
+		rl_plan.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(), MyInfoActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-		bt_start.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				
+				if(planFlag == 1) {
+					Intent intent = new Intent(getActivity(), MyInfoActivity.class);
+					startActivity(intent);
+				}
 			}
 		});
 	}

@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.twopillar.jiba.R;
@@ -17,7 +19,10 @@ import com.twopillar.jiba.fragment.PlanFragment;
 public class MainActivity extends FragmentActivity{
 
 	private FragmentTabHost mTabHost;
+	
 	private RadioGroup m_radioGroup;
+	
+	private long exitTime = 0;
 	String tabs[] = {"Tab1","Tab2","Tab3"};
 	Class cls[] = {PlanFragment.class,ActionFragment.class,MusicFragment.class};
 	@Override
@@ -28,8 +33,7 @@ public class MainActivity extends FragmentActivity{
 		initView();
 	}
 
-	private void initView()
-	{
+	private void initView() {
 		mTabHost = (FragmentTabHost)this.findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		mTabHost.getTabWidget().setVisibility(View.GONE);
@@ -57,6 +61,29 @@ public class MainActivity extends FragmentActivity{
 
 		((RadioButton) m_radioGroup.getChildAt(0)).toggle();
 	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+				getSupportFragmentManager().popBackStack();
+			} else {
+				ExitApp();
+			}
+		}
+		return false;
+	}
+
+	// 返回键双击退出APP
+	public void ExitApp() {
+		if ((System.currentTimeMillis() - exitTime) > 2000) {
+			Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+			exitTime = System.currentTimeMillis();
+		} else {
+			finish();
+		}
+	}
+
 
 
 }
