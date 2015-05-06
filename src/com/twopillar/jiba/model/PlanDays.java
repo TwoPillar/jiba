@@ -1,5 +1,8 @@
 package com.twopillar.jiba.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.litepal.crud.DataSupport;
 
 
@@ -16,9 +19,11 @@ public class PlanDays extends DataSupport {
 	
 	private int day;//第几天
 	
-	private String type;//类型
+	private String type;//类型 1
 	
 	private String description;//描述
+	
+	private List<PlanAction> planActions = new ArrayList<PlanAction>();//动作
 	
 	public Plan getPlan() {
 		return plan;
@@ -58,5 +63,13 @@ public class PlanDays extends DataSupport {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<PlanAction> getPlanActions() {
+		return planActions;
+	}
+
+	public void setPlanActions(List<PlanAction> planActions) {
+		this.planActions = planActions;
 	}
 }

@@ -12,11 +12,9 @@ public class PlanAction extends DataSupport {
 
 	private int id;
 	
-	private int planId;//计划Id
-	
 	private int actionId;//动作Id
 	
-	private int planDaysId;//训练第几天Id
+	private PlanDays planDays;//训练第几天
 	
 	private int reps;//次数
 	
@@ -24,28 +22,12 @@ public class PlanAction extends DataSupport {
 	
 	private int sequence;//顺序
 
-	public int getPlanId() {
-		return planId;
-	}
-
-	public void setPlanId(int planId) {
-		this.planId = planId;
-	}
-
 	public int getActionId() {
 		return actionId;
 	}
 
 	public void setActionId(int actionId) {
 		this.actionId = actionId;
-	}
-
-	public int getPlanDaysId() {
-		return planDaysId;
-	}
-
-	public void setPlanDaysId(int planDaysId) {
-		this.planDaysId = planDaysId;
 	}
 
 	public int getReps() {
@@ -78,5 +60,13 @@ public class PlanAction extends DataSupport {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public PlanDays getPlanDays() {
+		return planDays;
+	}
+
+	public void setPlanDays(PlanDays planDays) {
+		this.planDays = planDays;
 	}
 }

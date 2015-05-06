@@ -13,12 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.twopillar.jiba.R;
-import com.twopillar.jiba.activity.MyInfoActivity;
+import com.twopillar.jiba.activity.MakePlanActivity;
 import com.twopillar.jiba.model.Plan;
 import com.twopillar.jiba.model.PlanDays;
 import com.twopillar.jiba.util.DateUtil;
@@ -70,7 +69,7 @@ public class PlanFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				if(planFlag == 1) {
-					Intent intent = new Intent(getActivity(), MyInfoActivity.class);
+					Intent intent = new Intent(getActivity(), MakePlanActivity.class);
 					startActivity(intent);
 				}
 			}
@@ -79,11 +78,11 @@ public class PlanFragment extends Fragment {
 	
 	public void initData() {
 		Connector.getDatabase();
-		List<Plan> plans = DataSupport.findAll(Plan.class);//查询是否有计划，如果没有则为制定计划
-		if(plans.isEmpty()) {//
+
+		List<Plan> StartPlan = DataSupport.where("start = ?","1").find(Plan.class);//查询启动的计划
+		if(StartPlan.isEmpty()) {
 			planFlag = 1;
 		}else {
-			List<Plan> StartPlan = DataSupport.where("start = ?","1").find(Plan.class);//查询启动的计划
 			int planId = StartPlan.get(0).getId();
 			int day = DateUtil.getWeekOfDate(new Date());
 			List<PlanDays> planDays = DataSupport.where("day = ? and plan_id = ?",String.valueOf(day),String.valueOf(planId))
@@ -94,6 +93,6 @@ public class PlanFragment extends Fragment {
 			else if(planDays.get(0).getType() == "REST") {
 				planFlag = 3;
 			}
-		}
+		}	
 	}
 }

@@ -29,6 +29,8 @@
             android:name="com.twopillar.jiba.activity.ActionListActivity"/>
         <activity 
             android:name="com.twopillar.jiba.activity.ActionDetailActivity"/>
+        <activity 
+            android:name="com.twopillar.jiba.activity.MakePlanActivity"/>
     </application>
 
 </manifest>

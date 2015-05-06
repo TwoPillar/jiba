@@ -29,7 +29,7 @@ public class Plan extends DataSupport {
 	
 	private Date startDate;//开始时间
 	
-	private List<PlanDays> PlanDaysList = new ArrayList<PlanDays>();//训练一周次数
+	private List<PlanDays> planDaysList = new ArrayList<PlanDays>();//训练一周次数
 
 	public String getPlanName() {
 		return planName;
@@ -96,10 +96,14 @@ public class Plan extends DataSupport {
 	}
 
 	public List<PlanDays> getPlanDaysList() {
-		return PlanDaysList;
+		return planDaysList;
 	}
 
 	public void setPlanDaysList(List<PlanDays> planDaysList) {
-		PlanDaysList = planDaysList;
+		this.planDaysList = planDaysList;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

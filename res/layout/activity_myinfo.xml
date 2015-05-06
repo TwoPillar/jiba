@@ -1,16 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical" >
-    <TextView 
+	
+    <RelativeLayout
+        android:id="@+id/rl_height"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"/>
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp">
+	    <TextView
+	        android:id="@+id/tv_height" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="-4dp"
+	        android:text="身高："
+	        android:textSize="25sp"/>
+	    
+	    <EditText
+	        android:id="@+id/et_height"
+	        android:layout_width="60dp"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/tv_height" 
+	        android:singleLine="true"
+	        android:maxLength="3"
+	        android:inputType="number"
+	        android:gravity="center_vertical"/>
+	    
+	     <TextView
+	        android:id="@+id/tv_cm" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="-4dp"
+	        android:layout_toRightOf="@id/et_height"
+	        android:text="CM"
+	        android:textSize="25sp"/>
+    </RelativeLayout>
     
-    <ImageView 
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/test"/>
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+      	android:layout_below="@id/rl_height"
+      	android:layout_alignLeft="@id/rl_height"
+        android:layout_marginTop="20dp">
+	    <TextView
+	        android:id="@+id/tv_weight" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="-4dp"
+	        android:text="体重："
+	        android:textSize="25sp"/>
+	    
+	    <EditText
+	        android:id="@+id/et_weight"
+	        android:layout_width="60dp"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/tv_weight" 
+	        android:singleLine="true"
+	        android:maxLength="3"
+	        android:inputType="number"
+	        android:gravity="center_vertical"/>
+	    
+	     <TextView
+	        android:id="@+id/tv_kg" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/et_weight"
+	        android:layout_marginTop="-4dp"
+	        android:text="KG"
+	        android:textSize="25sp"/>
+    </RelativeLayout>
+	
+     <RelativeLayout
+        android:id="@+id/rl_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+	    android:layout_below="@id/rl_weight"
+        android:layout_alignLeft="@id/rl_weight"
+        android:layout_marginTop="20dp">
+	    
+        <TextView 
+            android:id="@+id/tv_sex"
+           	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="性别："
+	        android:textSize="25sp"/>
+         
+	    <RadioGroup 
+		    android:id="@+id/sex"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_toRightOf="@id/tv_sex"
+		    android:layout_marginTop="-4dp"
+	        android:orientation="horizontal">
+		    <RadioButton 
+		        android:id="@+id/male"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:checked="true"
+		        android:text="男"
+		        android:textColor="#000000"/>
+		    <RadioButton 
+		        android:id="@+id/female"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="女"
+		        android:textColor="#000000"/>
+	    </RadioGroup>
+	 </RelativeLayout>
+	 
+     <Button 
+         android:id="@+id/bt_next"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/rl_sex"
+         android:layout_marginTop="20dp"
+ 		 android:layout_centerHorizontal="true"
+         android:text="下一步"/>
+</RelativeLayout>
