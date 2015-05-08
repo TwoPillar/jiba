@@ -65,19 +65,19 @@
             <RadioButton
                 android:id="@+id/plan"
                 style="@style/tab_item_background"
-                android:drawableTop="@drawable/tab_icon2"
+                android:drawableTop="@drawable/icon_plan"
                 android:text="计划" />
 
             <RadioButton
                 android:id="@+id/action"
                 style="@style/tab_item_background"
-                android:drawableTop="@drawable/tab_icon3"
+                android:drawableTop="@drawable/icon_action"
                 android:text="动作" />
 
             <RadioButton
                 android:id="@+id/music"
                 style="@style/tab_item_background"
-                android:drawableTop="@drawable/tab_icon4"
+                android:drawableTop="@drawable/icon_music"
                 android:text="音乐" />
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#FFFFFF">
+    
+	<TextView 
+	    android:id="@+id/tv_seq"
+	    android:layout_width="40dp"
+	    android:layout_height="80dp"
+	    android:text="1"
+	    android:gravity="center"/>
+	
+	<ImageView 
+	    android:id="@+id/iv_action_pic"
+	    android:layout_width="80dp"
+	    android:layout_height="80dp"
+	    android:src="@drawable/btn_press"
+	    android:layout_toRightOf="@id/tv_seq"/>
+	
+	<TextView 
+	    android:id="@+id/tv_action_name"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/iv_action_pic"
+	    android:layout_marginLeft="10dp"
+	    android:text="杠铃卧推"
+	    android:textSize="18sp"/>
+	
+	<TextView 
+	    android:id="@+id/tv_muscle"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/iv_action_pic"
+	    android:layout_below="@id/tv_action_name"
+	    android:layout_marginTop="10dp"
+	    android:layout_marginLeft="10dp"
+	    android:text="胸肌"
+	    android:textSize="12sp"/>
+	
+	<TextView 
+	    android:id="@+id/tv_reps_sets"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dp"
+	    android:layout_toRightOf="@id/iv_action_pic"
+		android:layout_alignBottom="@id/iv_action_pic"
+	    android:text="4X12"/>
+</RelativeLayout>

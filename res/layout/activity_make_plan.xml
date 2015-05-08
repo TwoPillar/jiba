@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF" >
+	<include 
+	    layout="@layout/default_title"/>
+	
+	<TextView
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="10dp"
+	    android:gravity="center_horizontal"
+	    android:text="推荐计划"
+	    android:textColor="#000000"
+	    android:textSize="20sp"
+	    android:textStyle="bold" />
+	<View 
+	    style="@style/ViewSoildLine"
+	    android:layout_marginTop="10dp"/>
+	
+	<ListView 
+	    android:id="@+id/iv_recommend"
+	    android:layout_width="match_parent"
+	    android:layout_height="200dp"
+	    android:layout_marginTop="10dp"
+	    android:dividerHeight="18dp"
+	    android:listSelector="@android:color/transparent"
+	    android:divider="@null" >
+	</ListView>
+	
+	<View 
+	    style="@style/ViewSoildLine"
+	    android:layout_marginTop="10dp"/>
+	
+	<Button 
+	    android:id="@+id/bt_diy_plan"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="30dp"
+	    android:text="自定义"
+	    android:textSize="20dp"
+	    android:layout_gravity="center_horizontal"/>
+</LinearLayout>

@@ -66,7 +66,7 @@ public class PlanDays extends DataSupport {
 	}
 
 	public List<PlanAction> getPlanActions() {
-		return planActions;
+		return DataSupport.where("plandays_id = ?", String.valueOf(id)).find(PlanAction.class);
 	}
 
 	public void setPlanActions(List<PlanAction> planActions) {

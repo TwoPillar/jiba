@@ -48,5 +48,11 @@
     <style name="AnimationTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowAnimationStyle">@style/Animation</item>
     </style>
-
+	
+    <!-- 分割线 -->
+    <style name="ViewSoildLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#dddddd</item>
+    </style>
 </resources>
