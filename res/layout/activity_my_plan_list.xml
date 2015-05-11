@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+    
+    <include 
+        layout="@layout/default_title"/>
+    
+	<ListView 
+	    android:id="@+id/ll_plan_list"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:layout_marginTop="20dp"
+	    android:divider="@null"
+	    android:gravity="center_horizontal"/>
+	
+	<View 
+	    style="@style/ViewSoildLine"/>
+	
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+		<Button 
+		    android:id="@+id/bt_plan_detail"
+		    android:layout_width="120dp"
+		    android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="30dp"
+		    android:text="查看"/>
+		
+		<Button 
+		    android:id="@+id/bt_start"
+		    android:layout_width="120dp"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_marginRight="20dp"
+		    android:layout_marginTop="30dp"
+		    android:text="启动"/>
+	</RelativeLayout>
+</LinearLayout>

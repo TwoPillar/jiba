@@ -29,6 +29,8 @@ public class Plan extends DataSupport {
 	
 	private Date startDate;//开始时间
 	
+	private Boolean isMyPlan;//是否是我的计划
+	
 	private List<PlanDays> planDaysList = new ArrayList<PlanDays>();//训练一周次数
 
 	public String getPlanName() {
@@ -105,5 +107,13 @@ public class Plan extends DataSupport {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Boolean getIsMyPlan() {
+		return isMyPlan;
+	}
+
+	public void setIsMyPlan(Boolean isMyPlan) {
+		this.isMyPlan = isMyPlan;
 	}
 }

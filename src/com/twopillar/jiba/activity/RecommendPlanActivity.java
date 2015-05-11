@@ -3,7 +3,10 @@ package com.twopillar.jiba.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.litepal.crud.DataSupport;
+
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -37,6 +41,10 @@ public class RecommendPlanActivity extends Activity{
 	
 	private ImageButton ibt_back;
 	
+	private Button bt_add_my_plan;//加入到我的健身计划
+	
+	private int planId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,12 +58,17 @@ public class RecommendPlanActivity extends Activity{
 		lv_plan_detail = (ListView)findViewById(R.id.lv_plan_detail);
 		tv_title = (TextView)findViewById(R.id.tv_title);
 		ibt_back = (ImageButton)findViewById(R.id.ibt_back);
+		bt_add_my_plan = (Button)findViewById(R.id.bt_add_my_plan);
 	}
 	
 	private void initData() {
 		Intent intent = getIntent();
 		tv_title.setText(intent.getStringExtra("planName")); 
-		int planId = intent.getIntExtra("planId", 0);
+		planId = intent.getIntExtra("planId", 0);
+		int myPlanFlag = intent.getIntExtra("myPlanFlag", 0);//判断是否来自我的计划列表
+		if(myPlanFlag == 1){
+			bt_add_my_plan.setVisibility(View.GONE);
+		}
 		List<PlanDays> planDaysList = PlanDays.where("plan_id = ?",String.valueOf(planId)).find(PlanDays.class);
 		List<PlanDays> filterPlanDaysList = new ArrayList<PlanDays>();
 		for(PlanDays planDays : planDaysList){
@@ -89,6 +102,18 @@ public class RecommendPlanActivity extends Activity{
 			}
 		});
 		
+		bt_add_my_plan.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ContentValues values = new ContentValues();
+				values.put("ismyplan", true);
+				DataSupport.update(Plan.class, values, planId);//更新我的计划列表
+				Intent intent = new Intent(RecommendPlanActivity.this,MyPlanListActivity.class);
+				intent.putExtra("planId", planId);
+				startActivity(intent);
+			}
+		});
 	}
 	
 	class PlanDaysAdapter extends ArrayAdapter<PlanDays> {

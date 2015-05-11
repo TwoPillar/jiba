@@ -11,4 +11,16 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:listSelector="@android:color/transparent"/>
+	
+	<View 
+	    style="@style/ViewSoildLine"
+	    android:layout_marginTop="10dp"/>
+	
+	<Button 
+	    android:id="@+id/bt_add_my_plan"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="20dp"
+	    android:text="加入到我的计划"/>
 </LinearLayout>
