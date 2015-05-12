@@ -36,7 +36,7 @@ public class MyPlanListActivity extends Activity{
 	
 	private Button bt_start;//设为当前健身计划
 	
-	private Plan plan = null;
+	private Plan currentPlan = null;
 	
 	private List<Plan> plans;
 	
@@ -73,7 +73,6 @@ public class MyPlanListActivity extends Activity{
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				plan = myPlanAadapter.getItem(position);
 				myPlanAadapter.setSelectItem(position);
 				myPlanAadapter.notifyDataSetInvalidated();  
 			}
@@ -91,12 +90,12 @@ public class MyPlanListActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				if(plan == null){
+				if(currentPlan == null){
 					Toast.makeText(MyPlanListActivity.this, "请选择计划", Toast.LENGTH_SHORT).show();
 				}else {
 					Intent intent = new Intent(MyPlanListActivity.this, RecommendPlanActivity.class);
-					intent.putExtra("planName", plan.getPlanName());
-					intent.putExtra("planId", plan.getId());
+					intent.putExtra("planName", currentPlan.getPlanName());
+					intent.putExtra("planId", currentPlan.getId());
 					intent.putExtra("myPlanFlag", 1);
 					startActivity(intent);
 				}
@@ -108,12 +107,13 @@ public class MyPlanListActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				if(plan == null){
+				if(currentPlan == null){
 					Toast.makeText(MyPlanListActivity.this, "请选择计划", Toast.LENGTH_SHORT).show();
 				}else {
-					Toast.makeText(MyPlanListActivity.this, String.valueOf(plan.getId()), Toast.LENGTH_SHORT).show();
-					/*Intent intent = new Intent(MyPlanListActivity.this,MyPlanListActivity.class);
-					intent.putExtra("planId", planId);*/
+					Toast.makeText(MyPlanListActivity.this, String.valueOf(currentPlan.getId()), Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(MyPlanListActivity.this,SetStartDateActivity.class);
+					intent.putExtra("planId", currentPlan.getId());
+					startActivity(intent);
 				}
 				
 			}
@@ -125,6 +125,8 @@ public class MyPlanListActivity extends Activity{
 		private int resourceId;
 		
 		private int  selectItem = -1; 
+		
+		private boolean intoFlag = true;
 		
 		public MyPlanAadapter(Context context, int resourceId,
 				List<Plan> objects) {
@@ -149,7 +151,12 @@ public class MyPlanListActivity extends Activity{
 				holder = (ViewHolder)view.getTag();
 			}
 			holder.planName.setText(plan.getPlanName());
-			if (position == selectItem) {  
+			if(plan.isStart() && intoFlag) {
+				selectItem = position;
+				intoFlag = false;
+			}
+			if (position == selectItem) {
+				currentPlan = plan;
 				holder.iv_selected.setVisibility(View.VISIBLE);
 				holder.planName.setTextColor(Color.parseColor("#FFFFFF"));
 				view.setBackgroundColor(Color.parseColor("#000000"));

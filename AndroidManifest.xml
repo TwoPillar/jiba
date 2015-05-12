@@ -37,6 +37,8 @@
             android:name="com.twopillar.jiba.activity.RecommendPlanDetailActivity"/>
         <activity 
             android:name="com.twopillar.jiba.activity.MyPlanListActivity"/>
+        <activity 
+            android:name="com.twopillar.jiba.activity.SetStartDateActivity"/>
     </application>
 
 </manifest>

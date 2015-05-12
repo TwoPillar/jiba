@@ -27,7 +27,7 @@ public class Plan extends DataSupport {
 	
 	private boolean start;//启动
 	
-	private Date startDate;//开始时间
+	private String startDate;//开始时间
 	
 	private Boolean isMyPlan;//是否是我的计划
 	
@@ -73,11 +73,11 @@ public class Plan extends DataSupport {
 		this.start = start;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
