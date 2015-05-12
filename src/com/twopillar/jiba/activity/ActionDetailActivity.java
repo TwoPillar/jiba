@@ -1,6 +1,5 @@
 package com.twopillar.jiba.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 import com.twopillar.jiba.R;
 
-public class ActionDetailActivity extends Activity {
+public class ActionDetailActivity extends BaseActivity {
 	
 	public TextView action_description;
 	

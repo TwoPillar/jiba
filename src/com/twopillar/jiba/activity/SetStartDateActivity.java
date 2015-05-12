@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.litepal.crud.DataSupport;
 
-import android.R.integer;
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,8 +18,9 @@ import android.widget.Toast;
 
 import com.twopillar.jiba.R;
 import com.twopillar.jiba.model.Plan;
+import com.twopillar.jiba.util.ActivityCollector;
 
-public class SetStartDateActivity extends Activity{
+public class SetStartDateActivity extends BaseActivity{
 	
 	private DatePicker date_picker;
 	
@@ -107,6 +106,7 @@ public class SetStartDateActivity extends Activity{
 							values.put("currentDay", 1);
 							values.put("startdate", String.valueOf(year)+String.valueOf(month)+String.valueOf(day));
 							DataSupport.update(Plan.class, values, planId);//启动新的计划
+							ActivityCollector.finshAll();
 							Intent intent = new Intent(SetStartDateActivity.this,MainActivity.class);
 							startActivity(intent);
 						} 

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.litepal.crud.DataSupport;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +30,7 @@ import com.twopillar.jiba.model.PlanAction;
 import com.twopillar.jiba.model.PlanDays;
 import com.twopillar.jiba.util.ImageUtil;
 
-public class RecommendPlanActivity extends Activity{
+public class RecommendPlanActivity extends BaseActivity{
 	
 	private ListView lv_plan_detail;
 	

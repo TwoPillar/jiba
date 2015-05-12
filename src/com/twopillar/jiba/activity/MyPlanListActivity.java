@@ -2,7 +2,6 @@ package com.twopillar.jiba.activity;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -24,7 +23,7 @@ import android.widget.Toast;
 import com.twopillar.jiba.R;
 import com.twopillar.jiba.model.Plan;
 
-public class MyPlanListActivity extends Activity{
+public class MyPlanListActivity extends BaseActivity{
 	
 	private ListView ll_plan_list;//单选列表
 	

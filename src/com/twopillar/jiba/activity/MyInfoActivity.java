@@ -1,6 +1,5 @@
 package com.twopillar.jiba.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 import com.twopillar.jiba.R;
 import com.twopillar.jiba.util.StringUtils;
 
-public class MyInfoActivity extends Activity {
+public class MyInfoActivity extends BaseActivity {
 	
 	private EditText et_height;
 	

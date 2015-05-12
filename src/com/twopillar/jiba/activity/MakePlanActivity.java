@@ -3,7 +3,6 @@ package com.twopillar.jiba.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +20,7 @@ import android.widget.TextView;
 import com.twopillar.jiba.R;
 import com.twopillar.jiba.model.Plan;
 
-public class MakePlanActivity extends Activity{
+public class MakePlanActivity extends BaseActivity{
 	
 	private ListView iv_recommend;
 	

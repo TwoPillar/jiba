@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.litepal.crud.DataSupport;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,7 +25,7 @@ import com.twopillar.jiba.R;
 import com.twopillar.jiba.model.Action;
 import com.twopillar.jiba.util.ImageUtil;
 
-public class ActionListActivity extends Activity{
+public class ActionListActivity extends BaseActivity{
 	
 	private ListView lv_actionList;//动作列表;
 	

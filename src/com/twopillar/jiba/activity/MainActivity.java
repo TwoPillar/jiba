@@ -1,22 +1,21 @@
 package com.twopillar.jiba.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Toast;
 
 import com.twopillar.jiba.R;
 import com.twopillar.jiba.fragment.ActionFragment;
 import com.twopillar.jiba.fragment.MusicFragment;
 import com.twopillar.jiba.fragment.PlanFragment;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends BaseActivity{
 
 	private FragmentTabHost mTabHost;
 	
