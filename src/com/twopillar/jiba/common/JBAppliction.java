@@ -21,8 +21,8 @@ public class JBAppliction extends LitePalApplication{
 
 	@Override
 	public void onCreate() {
-		saveAction();
-		saveRecommendPlan();
+/*		saveAction();
+		saveRecommendPlan();*/
 	}
 	
 	/**

@@ -3,12 +3,14 @@ package com.twopillar.jiba.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.litepal.crud.DataSupport;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,7 +23,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.twopillar.jiba.R;
+import com.twopillar.jiba.api.HttpCallBack;
+import com.twopillar.jiba.api.JibaServerApi;
 import com.twopillar.jiba.model.Action;
 import com.twopillar.jiba.util.ImageUtil;
 
@@ -61,6 +66,23 @@ public class ActionListActivity extends BaseActivity{
 	}
 	
 	private void initData() {
+	    JibaServerApi.getInstance(ActionListActivity.this).getActionByType(actionType, new HttpCallBack() {
+
+            @Override
+            public void onSuccess(JSONObject response)
+            {
+              Log.d("ActionListActivity", response.toString());
+                
+            }
+
+            @Override
+            public void onFailure(VolleyError arg0)
+            {
+                Log.d("ActionListActivity", arg0.toString());
+                
+            }
+
+        });
 		actions = DataSupport.where("bigType = ?",actionType).find(Action.class);
 		actionAdatper = new ActionAdatper(ActionListActivity.this, R.layout.item_action, actions);
 		lv_actionList.setAdapter(actionAdatper);
