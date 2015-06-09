@@ -9,6 +9,7 @@ import org.litepal.crud.DataSupport;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,9 +23,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.android.volley.VolleyError;
 import com.twopillar.jiba.R;
+import com.twopillar.jiba.analysis.ActionAnalysis;
 import com.twopillar.jiba.api.HttpCallBack;
 import com.twopillar.jiba.api.JibaServerApi;
 import com.twopillar.jiba.model.Action;
@@ -71,22 +74,24 @@ public class ActionListActivity extends BaseActivity{
             @Override
             public void onSuccess(JSONObject response)
             {
+              ActionAnalysis analysis = new ActionAnalysis(response);
               Log.d("ActionListActivity", response.toString());
+              actions = analysis.getResult();
+              actionAdatper = new ActionAdatper(ActionListActivity.this, R.layout.item_action, actions);
+              lv_actionList.setAdapter(actionAdatper);
+              actionAdatper.notifyDataSetChanged();
                 
             }
 
             @Override
             public void onFailure(VolleyError arg0)
             {
-                Log.d("ActionListActivity", arg0.toString());
+              Log.d("ActionListActivity", arg0.toString());
                 
             }
 
         });
-		actions = DataSupport.where("bigType = ?",actionType).find(Action.class);
-		actionAdatper = new ActionAdatper(ActionListActivity.this, R.layout.item_action, actions);
-		lv_actionList.setAdapter(actionAdatper);
-		actionAdatper.notifyDataSetChanged();
+		
 	}
 	
 	private void setListener() {
@@ -125,9 +130,10 @@ public class ActionListActivity extends BaseActivity{
 		public View getView(int position, View convertView, ViewGroup parent) {
 			Action action = getItem(position);
 			View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
-			ImageView iv_pic = (ImageView)view.findViewById(R.id.iv_pic);
+			VideoView vv_action = (VideoView)view.findViewById(R.id.vv_action);
 			Bitmap picBitmap = ImageUtil.getImageFromAssetsFile(action.getImgPath(),getResources());//根据路径读取资源文件
-			iv_pic.setImageBitmap(picBitmap);
+			vv_action.setVideoURI(Uri.parse(action.getImgPath()));
+			vv_action.start();
 			TextView tv_name = (TextView)view.findViewById(R.id.tv_name);
 			tv_name.setText(action.getActionName());
 			return view;

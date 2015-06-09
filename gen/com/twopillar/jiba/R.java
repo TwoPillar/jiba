@@ -62,7 +62,6 @@ public final class R {
         public static final int include_title=0x7f070000;
         public static final int iv_action_pic=0x7f07002a;
         public static final int iv_my_plan=0x7f070021;
-        public static final int iv_pic=0x7f070024;
         public static final int iv_pic1=0x7f070032;
         public static final int iv_pic2=0x7f070033;
         public static final int iv_pic3=0x7f070034;
@@ -102,6 +101,7 @@ public final class R {
         public static final int tv_title=0x7f07001d;
         public static final int tv_total=0x7f070030;
         public static final int tv_weight=0x7f07000e;
+        public static final int vv_action=0x7f070024;
         public static final int wv_action_img=0x7f070001;
     }
     public static final class layout {
