@@ -19,29 +19,30 @@ public final class R {
         public static final int btn_background=0x7f020001;
         public static final int btn_press=0x7f020002;
         public static final int clock=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int icon=0x7f020005;
-        public static final int icon_action=0x7f020006;
-        public static final int icon_music=0x7f020007;
-        public static final int icon_plan=0x7f020008;
-        public static final int mark=0x7f020009;
-        public static final int muscle=0x7f02000a;
-        public static final int my_plan=0x7f02000b;
-        public static final int next_month=0x7f02000c;
-        public static final int prev_month=0x7f02000d;
-        public static final int selected=0x7f02000e;
-        public static final int selected2=0x7f02000f;
-        public static final int selected_frame=0x7f020010;
-        public static final int selector_btn=0x7f020011;
-        public static final int selector_tab_background=0x7f020012;
-        public static final int selector_tab_background2=0x7f020013;
-        public static final int sy_2=0x7f020014;
-        public static final int sy_2_1=0x7f020015;
-        public static final int tab_indicator=0x7f020016;
-        public static final int tab_item_d=0x7f020017;
-        public static final int tab_item_p=0x7f020018;
-        public static final int tab_widget_background=0x7f020019;
-        public static final int unselected_frame=0x7f02001a;
+        public static final int default_pic=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int icon=0x7f020006;
+        public static final int icon_action=0x7f020007;
+        public static final int icon_music=0x7f020008;
+        public static final int icon_plan=0x7f020009;
+        public static final int mark=0x7f02000a;
+        public static final int muscle=0x7f02000b;
+        public static final int my_plan=0x7f02000c;
+        public static final int next_month=0x7f02000d;
+        public static final int prev_month=0x7f02000e;
+        public static final int selected=0x7f02000f;
+        public static final int selected2=0x7f020010;
+        public static final int selected_frame=0x7f020011;
+        public static final int selector_btn=0x7f020012;
+        public static final int selector_tab_background=0x7f020013;
+        public static final int selector_tab_background2=0x7f020014;
+        public static final int sy_2=0x7f020015;
+        public static final int sy_2_1=0x7f020016;
+        public static final int tab_indicator=0x7f020017;
+        public static final int tab_item_d=0x7f020018;
+        public static final int tab_item_p=0x7f020019;
+        public static final int tab_widget_background=0x7f02001a;
+        public static final int unselected_frame=0x7f02001b;
     }
     public static final class id {
         public static final int action=0x7f070038;
@@ -60,6 +61,7 @@ public final class R {
         public static final int female=0x7f070015;
         public static final int ibt_back=0x7f07001c;
         public static final int include_title=0x7f070000;
+        public static final int iv_action=0x7f070024;
         public static final int iv_action_pic=0x7f07002a;
         public static final int iv_my_plan=0x7f070021;
         public static final int iv_pic1=0x7f070032;
@@ -101,8 +103,7 @@ public final class R {
         public static final int tv_title=0x7f07001d;
         public static final int tv_total=0x7f070030;
         public static final int tv_weight=0x7f07000e;
-        public static final int vv_action=0x7f070024;
-        public static final int wv_action_img=0x7f070001;
+        public static final int wv_action=0x7f070001;
     }
     public static final class layout {
         public static final int activity_action_detail=0x7f030000;

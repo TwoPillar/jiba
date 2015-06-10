@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
-import org.litepal.crud.DataSupport;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,18 +17,20 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
 import com.twopillar.jiba.R;
 import com.twopillar.jiba.analysis.ActionAnalysis;
 import com.twopillar.jiba.api.HttpCallBack;
 import com.twopillar.jiba.api.JibaServerApi;
+import com.twopillar.jiba.common.BitmapCache;
+import com.twopillar.jiba.common.ImageManager;
 import com.twopillar.jiba.model.Action;
-import com.twopillar.jiba.util.ImageUtil;
 
 public class ActionListActivity extends BaseActivity{
 	
@@ -101,7 +100,7 @@ public class ActionListActivity extends BaseActivity{
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Action action = actions.get(position);
 				Intent intent = new Intent(ActionListActivity.this,ActionDetailActivity.class);
-				intent.putExtra("imgPath", action.getImgPath());
+				intent.putExtra("video", action.getVideoUrl());
 				intent.putExtra("title", action.getActionName());
 				intent.putExtra("description", action.getDescription());
 				startActivity(intent);
@@ -130,10 +129,10 @@ public class ActionListActivity extends BaseActivity{
 		public View getView(int position, View convertView, ViewGroup parent) {
 			Action action = getItem(position);
 			View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
-			VideoView vv_action = (VideoView)view.findViewById(R.id.vv_action);
-			Bitmap picBitmap = ImageUtil.getImageFromAssetsFile(action.getImgPath(),getResources());//根据路径读取资源文件
-			vv_action.setVideoURI(Uri.parse(action.getImgPath()));
-			vv_action.start();
+			NetworkImageView  iv_action = (NetworkImageView)view.findViewById(R.id.iv_action);
+			iv_action.setDefaultImageResId(R.drawable.default_pic);
+			iv_action.setErrorImageResId(R.drawable.default_pic); 
+			iv_action.setImageUrl(action.getImgPath(),ImageManager.getInstance(ActionListActivity.this));
 			TextView tv_name = (TextView)view.findViewById(R.id.tv_name);
 			tv_name.setText(action.getActionName());
 			return view;

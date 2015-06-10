@@ -4,15 +4,14 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
     
-	<VideoView 
-	    android:id="@+id/vv_action"
+	<com.android.volley.toolbox.NetworkImageView    
+	    android:id="@+id/iv_action"
 	    android:layout_width="60dp"
-	    android:layout_height="60dp"
-	    android:src="@drawable/muscle"/>
+	    android:layout_height="60dp"/>
 	
 	<TextView
 	    android:id="@+id/tv_name"
-	    android:layout_toRightOf="@id/vv_action"
+	    android:layout_toRightOf="@id/iv_action"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"/>
 </RelativeLayout>

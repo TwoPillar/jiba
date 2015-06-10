@@ -29,7 +29,8 @@ public class ActionAnalysis
                 JSONObject jsonObject = (JSONObject) jsonArray.opt(i);
                 Action info=new Action();
                 info.setId(jsonObject.getInt("id"));
-                info.setImgPath(Constants.url+jsonObject.getString("url"));
+                info.setImgPath(Constants.url+jsonObject.getString("imageUrl"));
+                info.setVideoUrl(Constants.url+jsonObject.getString("videoUrl"));
                 info.setBigType(jsonObject.getString("type"));
                 info.setDescription(jsonObject.getString("description"));
                 info.setActionName(jsonObject.getString("actionName"));

@@ -9,11 +9,11 @@
         android:id="@+id/include_title"
         layout="@layout/default_title"/>
 	 
-	<VideoView 
-	    android:id="@+id/wv_action_img"  
-        android:layout_width="wrap_content"  
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+	<WebView 
+	    android:id="@+id/wv_action"  
+        android:layout_width="200dp"  
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"/>
 	
 	<TextView 
 	    android:layout_width="wrap_content"

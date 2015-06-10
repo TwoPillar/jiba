@@ -21,6 +21,8 @@ public class Action extends DataSupport{
 	private String imgPath;//图片路径
 	
 	private String description;//描述
+	
+	private String videoUrl;//视频路径
 
 	public String getBigType() {
 		return bigType;
@@ -69,5 +71,15 @@ public class Action extends DataSupport{
 	public void setId(int id) {
 		this.id = id;
 	}
+
+    public String getVideoUrl()
+    {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl)
+    {
+        this.videoUrl = videoUrl;
+    }
 
 }

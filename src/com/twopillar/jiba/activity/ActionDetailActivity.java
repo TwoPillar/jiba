@@ -12,9 +12,9 @@ import com.twopillar.jiba.R;
 
 public class ActionDetailActivity extends BaseActivity {
 	
-	public TextView action_description;
+	public TextView actionDescription;
 	
-	public WebView wv_action_img;
+	public WebView vvAction;
 	
 	private ImageButton ibt_back;//返回
 	
@@ -23,6 +23,8 @@ public class ActionDetailActivity extends BaseActivity {
 	private String title;//标题名
 	
 	private Intent intent;
+	
+	private String video;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +38,20 @@ public class ActionDetailActivity extends BaseActivity {
 	}
 	
 	private void initView() {
-		action_description = (TextView)findViewById(R.id.action_description);
-		wv_action_img = (WebView)findViewById(R.id.wv_action_img);
+	    actionDescription = (TextView)findViewById(R.id.action_description);
+	    vvAction = (WebView)findViewById(R.id.wv_action);
+	   
+
 		ibt_back = (ImageButton)findViewById(R.id.ibt_back);
 		tv_title = (TextView)findViewById(R.id.tv_title);
 		tv_title.setText(title);
 	}
 	
 	private void initData() {
-		String imgPath = intent.getStringExtra("imgPath");
-		wv_action_img.loadUrl("file:///android_asset/"+imgPath);
-	  
+		video = intent.getStringExtra("video");
+		vvAction.loadUrl("http://192.168.1.69:8080/jiba-server/action/shoulder/mp4/2212.gif");
 		String description = intent.getStringExtra("description");
-		action_description.setText(description);
+		actionDescription.setText(description);
 	}
 	
 	private void setListener() {
