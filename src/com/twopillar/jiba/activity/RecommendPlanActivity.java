@@ -151,7 +151,7 @@ public class RecommendPlanActivity extends BaseActivity{
 			List<PlanAction> planActions = planDays.getPlanActions();
 			holder.tv_total.setText("总共"+String.valueOf(planActions.size())+"动作");
 			Action action1= Action.find(Action.class, planActions.get(0).getActionId());
-			Bitmap picBitmap1 = ImageUtil.getImageFromAssetsFile(action1.getImgPath(),getResources());//根据路径读取资源文件
+/*			Bitmap picBitmap1 = ImageUtil.getImageFromAssetsFile(action1.getImgPath(),getResources());//根据路径读取资源文件
 			holder.iv_pic1.setImageBitmap(picBitmap1);
 			
 			Action action2= Action.find(Action.class, planActions.get(1).getActionId());
@@ -161,7 +161,7 @@ public class RecommendPlanActivity extends BaseActivity{
 			Action action3= Action.find(Action.class, planActions.get(2).getActionId());
 			Bitmap picBitmap3 = ImageUtil.getImageFromAssetsFile(action3.getImgPath(),getResources());//根据路径读取资源文件
 			holder.iv_pic3.setImageBitmap(picBitmap3);
-			
+			*/
 			return view;
 		}
 

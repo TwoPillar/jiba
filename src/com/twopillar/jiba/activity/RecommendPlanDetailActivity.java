@@ -81,7 +81,7 @@ public class RecommendPlanDetailActivity extends BaseActivity{
 				PlanAction planAction = planActions.get(position);
 				Action action = Action.find(Action.class, planAction.getActionId());
 				Intent intent = new Intent(RecommendPlanDetailActivity.this,ActionDetailActivity.class);
-				intent.putExtra("imgPath", action.getImgPath());
+				/*intent.putExtra("imgPath", action.getImgPath());*/
 				intent.putExtra("title", action.getActionName());
 				intent.putExtra("description", action.getDescription());
 				startActivity(intent);
@@ -121,8 +121,8 @@ public class RecommendPlanDetailActivity extends BaseActivity{
 			Action action = Action.find(Action.class, planAction.getActionId());
 			holder.tv_action_name.setText(action.getActionName());
 			holder.tv_muscle.setText(action.getBigType());
-			Bitmap bm = ImageUtil.getImageFromAssetsFile(action.getImgPath(), getResources());
-			holder.iv_action_pic.setImageBitmap(bm);
+	/*		Bitmap bm = ImageUtil.getImageFromAssetsFile(action.getImgPath(), getResources());*/
+			/*holder.iv_action_pic.setImageBitmap(bm);*/
 			holder.tv_reps_sets.setText(planAction.getSets()+"x"+planAction.getReps());
 			return view;
 		}

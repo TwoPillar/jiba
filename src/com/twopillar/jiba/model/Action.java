@@ -2,6 +2,9 @@ package com.twopillar.jiba.model;
 
 import org.litepal.crud.DataSupport;
 
+import android.R.integer;
+import android.graphics.Bitmap;
+
 
 /**
  * GuoJianAn
@@ -18,11 +21,9 @@ public class Action extends DataSupport{
 	
 	private String actionName;//动作名称
 	
-	private String imgPath;//图片路径
-	
 	private String description;//描述
 	
-	private String videoUrl;//视频路径
+	private int drawableId;
 
 	public String getBigType() {
 		return bigType;
@@ -48,14 +49,6 @@ public class Action extends DataSupport{
 		this.actionName = actionName;
 	}
 
-	public String getImgPath() {
-		return imgPath;
-	}
-
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -72,14 +65,14 @@ public class Action extends DataSupport{
 		this.id = id;
 	}
 
-    public String getVideoUrl()
+    public int getDrawableId()
     {
-        return videoUrl;
+        return drawableId;
     }
 
-    public void setVideoUrl(String videoUrl)
+    public void setDrawableId(int drawableId)
     {
-        this.videoUrl = videoUrl;
+        this.drawableId = drawableId;
     }
 
 }

@@ -11,6 +11,11 @@ import org.json.JSONObject;
 import org.litepal.LitePalApplication;
 import org.litepal.crud.DataSupport;
 
+import android.R.integer;
+import android.annotation.SuppressLint;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
+
 import com.twopillar.jiba.model.Action;
 import com.twopillar.jiba.model.Plan;
 import com.twopillar.jiba.model.PlanAction;
@@ -21,40 +26,24 @@ public class JBAppliction extends LitePalApplication{
 
 	@Override
 	public void onCreate() {
-/*		saveAction();
-		saveRecommendPlan();*/
+	    saveAction();
+//		saveRecommendPlan();
 	}
 	
 	/**
 	 * 保存动作图片
 	 */
-	private void saveAction() {
+    private void saveAction() {
 		Action actionDB = DataSupport.findFirst(Action.class);//如果动作表没数据则加载资源文件到数据库
 		if(actionDB == null) {
 			try {
 				InputStream is = getAssets().open("actionChineseName.json");//读取动作中文名json文件
 				JSONObject actionChineseNameJson = JsonUtil.inputStream2String(is);
 				is.close();
-				String[] folderList = {"shoulder","thorax","triceps","bicipital","back","abdominal","leg"};
-				String[] actionNameList = null;
+				String[] acntionTypeList = {"shoulder","thorax","triceps","bicipital","back","abdominal","leg"};
 				List<Action> actionList = new ArrayList<Action>();
-				for(String folder : folderList) { 
-					actionNameList = getAssets().list(folder);
-				    for(int i=0;i<actionNameList.length;++i)  
-					{ 
-				    	Action action = new Action();
-				    	String imgPath = folder+"/"+actionNameList[i];//动作的路径 
-				    	action.setBigType(folder);//类型
-				    	action.setImgPath(imgPath);//图片路径
-				    	try {
-							action.setActionName(actionChineseNameJson.getString(actionNameList[i]).split("/")[0]);//动作名
-							action.setDescription(actionChineseNameJson.getString(actionNameList[i]).split("/")[1]);//描述
-						} catch (JSONException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-				    	actionList.add(action);
-					}
+				for(String actionType : acntionTypeList) {
+				    actionAnalysis(actionChineseNameJson, actionList, actionType);
 				}
 				Action.saveAll(actionList);
 			}catch (IOException e) {
@@ -63,6 +52,41 @@ public class JBAppliction extends LitePalApplication{
 			}
 		}
 	}
+
+    @SuppressLint("NewApi")
+    private void actionAnalysis(JSONObject actionChineseNameJson, List<Action> actionList, String actionType) {
+        
+        int n = 0;
+        if(actionType.equals("shoulder")) {
+            n = 17;
+        }else if (actionType.equals("thorax")) {
+            n = 27;
+        }else if (actionType.equals("triceps")) {
+            n = 10;
+        }else if (actionType.equals("bicipital")) {
+            n = 7;
+        }else if (actionType.equals("back")) {
+            n = 11;
+        }else if (actionType.equals("abdominal")) {
+            n = 8;
+        }else if (actionType.equals("leg")) {
+            n = 16;
+        }
+        for (int i = 0; i < n; i++) {
+                Action action = new Action();
+                int drawable = getResources().getIdentifier(actionType+"_" + (i+1), "raw", this.getPackageName()); 
+                action.setDrawableId(drawable);
+                action.setBigType(actionType);
+                try {
+                    action.setActionName(actionChineseNameJson.getString(actionType+"_" + (i+1)+".mp4").split("/")[0]);//动作名
+                    action.setDescription(actionChineseNameJson.getString(actionType+"_" + (i+1)+".mp4").split("/")[1]);//描述
+                }catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                actionList.add(action);
+            }
+    }
 	
 	/**
 	 * 保存推荐计划

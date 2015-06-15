@@ -3,12 +3,15 @@ package com.twopillar.jiba.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
+import android.net.wifi.p2p.WifiP2pManager.ActionListener;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,19 +20,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 import com.twopillar.jiba.R;
-import com.twopillar.jiba.analysis.ActionAnalysis;
-import com.twopillar.jiba.api.HttpCallBack;
-import com.twopillar.jiba.api.JibaServerApi;
-import com.twopillar.jiba.common.BitmapCache;
-import com.twopillar.jiba.common.ImageManager;
 import com.twopillar.jiba.model.Action;
 
 public class ActionListActivity extends BaseActivity{
@@ -67,30 +62,12 @@ public class ActionListActivity extends BaseActivity{
 		tv_title.setText(title);
 	}
 	
-	private void initData() {
-	    JibaServerApi.getInstance(ActionListActivity.this).getActionByType(actionType, new HttpCallBack() {
-
-            @Override
-            public void onSuccess(JSONObject response)
-            {
-              ActionAnalysis analysis = new ActionAnalysis(response);
-              Log.d("ActionListActivity", response.toString());
-              actions = analysis.getResult();
-              actionAdatper = new ActionAdatper(ActionListActivity.this, R.layout.item_action, actions);
-              lv_actionList.setAdapter(actionAdatper);
-              actionAdatper.notifyDataSetChanged();
-                
-            }
-
-            @Override
-            public void onFailure(VolleyError arg0)
-            {
-              Log.d("ActionListActivity", arg0.toString());
-                
-            }
-
-        });
-		
+	@SuppressLint("NewApi")
+    private void initData() {
+	    actions = DataSupport.where("bigtype = ?", actionType).find(Action.class);
+	    actionAdatper = new ActionAdatper(ActionListActivity.this, R.layout.item_action, actions);
+        lv_actionList.setAdapter(actionAdatper);
+        actionAdatper.notifyDataSetChanged();
 	}
 	
 	private void setListener() {
@@ -100,7 +77,7 @@ public class ActionListActivity extends BaseActivity{
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Action action = actions.get(position);
 				Intent intent = new Intent(ActionListActivity.this,ActionDetailActivity.class);
-				intent.putExtra("video", action.getVideoUrl());
+				intent.putExtra("video", action.getDrawableId());
 				intent.putExtra("title", action.getActionName());
 				intent.putExtra("description", action.getDescription());
 				startActivity(intent);
@@ -116,7 +93,8 @@ public class ActionListActivity extends BaseActivity{
 		});
 	}
 	
-	private class ActionAdatper extends ArrayAdapter<Action> {
+	@SuppressLint("NewApi")
+    private class ActionAdatper extends ArrayAdapter<Action> {
 		
 		private int resourceId;
 		
@@ -129,10 +107,11 @@ public class ActionListActivity extends BaseActivity{
 		public View getView(int position, View convertView, ViewGroup parent) {
 			Action action = getItem(position);
 			View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
-			NetworkImageView  iv_action = (NetworkImageView)view.findViewById(R.id.iv_action);
-			iv_action.setDefaultImageResId(R.drawable.default_pic);
-			iv_action.setErrorImageResId(R.drawable.default_pic); 
-			iv_action.setImageUrl(action.getImgPath(),ImageManager.getInstance(ActionListActivity.this));
+			ImageView  iv_action = (ImageView)view.findViewById(R.id.iv_action);
+			MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            Uri uri=Uri.parse("android.resource://" + getPackageName() + "/"+action.getDrawableId());
+            retriever.setDataSource(getContext(), uri);//缩略图
+			iv_action.setImageBitmap(retriever.getFrameAtTime());
 			TextView tv_name = (TextView)view.findViewById(R.id.tv_name);
 			tv_name.setText(action.getActionName());
 			return view;

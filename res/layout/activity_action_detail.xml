@@ -9,8 +9,8 @@
         android:id="@+id/include_title"
         layout="@layout/default_title"/>
 	 
-	<WebView 
-	    android:id="@+id/wv_action"  
+	<VideoView 
+	    android:id="@+id/vv_action"  
         android:layout_width="200dp"  
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"/>

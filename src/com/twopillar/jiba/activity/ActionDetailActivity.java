@@ -1,12 +1,14 @@
 package com.twopillar.jiba.activity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.twopillar.jiba.R;
 
@@ -14,7 +16,7 @@ public class ActionDetailActivity extends BaseActivity {
 	
 	public TextView actionDescription;
 	
-	public WebView vvAction;
+	public VideoView vvAction;
 	
 	private ImageButton ibt_back;//返回
 	
@@ -24,7 +26,7 @@ public class ActionDetailActivity extends BaseActivity {
 	
 	private Intent intent;
 	
-	private String video;
+	private int video;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class ActionDetailActivity extends BaseActivity {
 	
 	private void initView() {
 	    actionDescription = (TextView)findViewById(R.id.action_description);
-	    vvAction = (WebView)findViewById(R.id.wv_action);
+	    vvAction = (VideoView)findViewById(R.id.vv_action);
 	   
 
 		ibt_back = (ImageButton)findViewById(R.id.ibt_back);
@@ -48,11 +50,34 @@ public class ActionDetailActivity extends BaseActivity {
 	}
 	
 	private void initData() {
-		video = intent.getStringExtra("video");
-		vvAction.loadUrl("http://192.168.1.69:8080/jiba-server/action/shoulder/mp4/2212.gif");
+		video = intent.getIntExtra("video", 0);
 		String description = intent.getStringExtra("description");
+		vvAction.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" +video)); 
+		vvAction.start();  
+		vvAction.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {  
+  
+            @Override  
+            public void onPrepared(MediaPlayer mp) {  
+                mp.start();  
+                mp.setLooping(true);  
+  
+            }  
+        });  
+  
+		vvAction.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {  
+  
+                    @Override  
+                    public void onCompletion(MediaPlayer mp) {  
+                        vvAction.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" +video));  
+                        vvAction.start();  
+  
+                    }  
+                });  
+  
 		actionDescription.setText(description);
-	}
+    }  
+  
+
 	
 	private void setListener() {
 		ibt_back.setOnClickListener(new OnClickListener() {
