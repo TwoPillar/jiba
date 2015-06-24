@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+    
+	<Button 
+	     android:id="@+id/bt_login"
+	     android:layout_width="match_parent"
+	     android:layout_height="44dp"
+	     android:layout_marginTop="25dp"
+         android:layout_marginLeft="38dp"
+         android:layout_marginRight="38dp"
+	     android:text="登录"
+	     android:textColor="#333333"
+	     android:textSize="15sp"
+         android:background="@drawable/login_btn"
+         android:layout_alignParentBottom="true"
+         android:layout_marginBottom="113dp"/>
+    
+     <View style="@style/ViewSoildLine"
+         android:id="@+id/line1" 
+         android:layout_marginBottom="30dp"
+         android:layout_above="@id/bt_login"
+         android:layout_marginLeft="38dp"
+         android:layout_marginRight="38dp"
+         android:background="#999999"/>
+    
+    <EditText 
+         android:id="@+id/et_password"
+         android:layout_width="match_parent"
+         android:layout_height="43dp"
+         android:layout_above="@id/line1"
+         android:hint="请输入您的门店密码"
+         android:layout_marginLeft="48dp"
+         android:layout_marginTop="5dp"
+         android:layout_marginRight="12dp"
+         android:inputType="textPassword"
+         android:drawableLeft="@drawable/ic_password"
+         android:drawablePadding="21dp"
+         android:textColor="#999999"
+         android:textSize="13sp"
+         android:background="@null"/>
+    
+    <TextView 
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_password"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="10dp"
+        android:text="注册"
+        android:textColor="#1983EA"/>
+    
+    <TextView 
+        android:id="@+id/tv_forget_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_password"
+        android:layout_alignParentRight="true"
+         android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:text="忘记密码"
+        android:textColor="#1983EA"/>
+    
+    <ImageView 
+        android:id="@+id/blank_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_above="@id/line1"
+        android:src="@drawable/ic_eye_activation"
+        android:layout_toRightOf="@id/et_password"
+        android:layout_marginLeft="-65dp"
+        android:visibility="gone"/>
+    
+    <ImageView 
+        android:id="@+id/show_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_above="@id/line1"
+        android:src="@drawable/ic_eye"
+        android:layout_toRightOf="@id/et_password"
+        android:layout_marginLeft="-65dp"/>
+    
+     <View style="@style/ViewSoildLine"
+         android:id="@+id/line2" 
+         android:layout_above="@id/et_password"
+         android:layout_marginLeft="38dp"
+         android:layout_marginRight="38dp"
+         android:background="#999999"/>
+     
+     <EditText 
+         android:id="@+id/et_account"
+         android:layout_width="match_parent"
+         android:layout_height="43dp"
+         android:hint="请输入您的门店账号"
+         android:layout_marginTop="40dp"
+         android:layout_marginLeft="48dp"
+         android:layout_marginRight="12dp"
+         android:layout_above="@id/line2"
+         android:drawablePadding="21dp"
+         android:textSize="13sp"
+         android:textColor="#999999"
+         android:drawableLeft="@drawable/ic_account"
+         android:background="@null"/>
+     
+     <ImageView 
+        android:id="@+id/iv_log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_login_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/et_account"/>
+    
+</RelativeLayout>

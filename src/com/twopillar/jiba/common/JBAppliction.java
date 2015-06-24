@@ -76,6 +76,10 @@ public class JBAppliction extends LitePalApplication{
                 Action action = new Action();
                 int drawable = getResources().getIdentifier(actionType+"_" + (i+1), "raw", this.getPackageName()); 
                 action.setDrawableId(drawable);
+                if(actionType.equals("shoulder")) {
+                    int drawablePicId = getResources().getIdentifier(actionType+"_pic_" + (i+1), "raw", this.getPackageName());
+                    action.setDrawablePicId(drawablePicId);
+                }
                 action.setBigType(actionType);
                 try {
                     action.setActionName(actionChineseNameJson.getString(actionType+"_" + (i+1)+".mp4").split("/")[0]);//动作名

@@ -30,4 +30,20 @@ public class JibaServerApi {
                 callBack);
         add(requestJsonObject);
     }
+    
+    public void login(String phone, String password, HttpCallBack callBack) {
+        String method = "user/login";
+        RequestJsonObject requestJsonObject = new RequestJsonObject(
+                Request.Method.GET, Constants.url + "/" + method + "?phone=" + phone +"&password="+ password, null,
+                callBack);
+        add(requestJsonObject);
+    }
+    
+    public void register(String phone, String password, HttpCallBack callBack) {
+        String method = "user/register";
+        RequestJsonObject requestJsonObject = new RequestJsonObject(
+                Request.Method.GET, Constants.url + "/" + method + "?phone=" + phone +"&password="+ password, null,
+                callBack);
+        add(requestJsonObject);
+    }
 }

@@ -24,6 +24,8 @@ public class Action extends DataSupport{
 	private String description;//描述
 	
 	private int drawableId;
+	
+	private int drawablePicId;
 
 	public String getBigType() {
 		return bigType;
@@ -73,6 +75,16 @@ public class Action extends DataSupport{
     public void setDrawableId(int drawableId)
     {
         this.drawableId = drawableId;
+    }
+
+    public int getDrawablePicId()
+    {
+        return drawablePicId;
+    }
+
+    public void setDrawablePicId(int drawablePicId)
+    {
+        this.drawablePicId = drawablePicId;
     }
 
 }

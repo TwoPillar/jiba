@@ -6,12 +6,15 @@
     
 	<ImageView    
 	    android:id="@+id/iv_action"
-	    android:layout_width="60dp"
-	    android:layout_height="60dp"/>
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"/>
 	
 	<TextView
 	    android:id="@+id/tv_name"
 	    android:layout_toRightOf="@id/iv_action"
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"/>
+	    android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:textColor="#000000"/>
 </RelativeLayout>

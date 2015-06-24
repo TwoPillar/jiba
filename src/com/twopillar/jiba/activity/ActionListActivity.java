@@ -8,6 +8,7 @@ import org.litepal.crud.DataSupport;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.net.wifi.p2p.WifiP2pManager.ActionListener;
@@ -25,6 +26,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.twopillar.jiba.R;
+import com.twopillar.jiba.common.ViewHolder;
 import com.twopillar.jiba.model.Action;
 
 public class ActionListActivity extends BaseActivity{
@@ -98,6 +100,10 @@ public class ActionListActivity extends BaseActivity{
 		
 		private int resourceId;
 		
+		private MediaMetadataRetriever retriever;
+		
+		private Uri uri;
+		
 		public ActionAdatper(Context context, int resource, List<Action> objects) {
 			super(context, resource, objects);
 			resourceId = resource;
@@ -105,16 +111,20 @@ public class ActionListActivity extends BaseActivity{
 		
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			Action action = getItem(position);
-			View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
-			ImageView  iv_action = (ImageView)view.findViewById(R.id.iv_action);
-			MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-            Uri uri=Uri.parse("android.resource://" + getPackageName() + "/"+action.getDrawableId());
-            retriever.setDataSource(getContext(), uri);//缩略图
-			iv_action.setImageBitmap(retriever.getFrameAtTime());
-			TextView tv_name = (TextView)view.findViewById(R.id.tv_name);
-			tv_name.setText(action.getActionName());
-			return view;
+		    Action action = getItem(position);
+		    if(convertView == null) {
+		        convertView = LayoutInflater.from(getContext()).inflate(resourceId, null);
+		    }
+    			ImageView iv_action = ViewHolder.get(convertView, R.id.iv_action);
+/*    			retriever = new MediaMetadataRetriever();
+                uri=Uri.parse("android.resource://" + getPackageName() + "/"+action.getDrawableId());
+                retriever.setDataSource(getContext(), uri);//缩略图
+    			iv_action.setImageBitmap(retriever.getFrameAtTime());*/
+    			iv_action.setImageResource(action.getDrawablePicId());
+    			TextView tv_name = ViewHolder.get(convertView, R.id.tv_name);
+    			tv_name.setText(action.getActionName());
+		  
+    			return convertView;
 		}
 	}
 }
