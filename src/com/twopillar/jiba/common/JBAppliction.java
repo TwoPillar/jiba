@@ -40,7 +40,7 @@ public class JBAppliction extends LitePalApplication{
 				InputStream is = getAssets().open("actionChineseName.json");//读取动作中文名json文件
 				JSONObject actionChineseNameJson = JsonUtil.inputStream2String(is);
 				is.close();
-				String[] acntionTypeList = {"shoulder","thorax","triceps","bicipital","back","abdominal","leg"};
+				String[] acntionTypeList = {"shoulder","thorax","triceps","bicipital","back","abdominal","leg","aerobic"};
 				List<Action> actionList = new ArrayList<Action>();
 				for(String actionType : acntionTypeList) {
 				    actionAnalysis(actionChineseNameJson, actionList, actionType);
@@ -71,15 +71,15 @@ public class JBAppliction extends LitePalApplication{
             n = 8;
         }else if (actionType.equals("leg")) {
             n = 16;
+        }else if (actionType.equals("aerobic")) {
+            n = 6;
         }
         for (int i = 0; i < n; i++) {
                 Action action = new Action();
                 int drawable = getResources().getIdentifier(actionType+"_" + (i+1), "raw", this.getPackageName()); 
                 action.setDrawableId(drawable);
-                if(actionType.equals("shoulder")) {
-                    int drawablePicId = getResources().getIdentifier(actionType+"_pic_" + (i+1), "raw", this.getPackageName());
-                    action.setDrawablePicId(drawablePicId);
-                }
+                int drawablePicId = getResources().getIdentifier(actionType+"_pic_" + (i+1), "raw", this.getPackageName());
+                action.setDrawablePicId(drawablePicId);
                 action.setBigType(actionType);
                 try {
                     action.setActionName(actionChineseNameJson.getString(actionType+"_" + (i+1)+".mp4").split("/")[0]);//动作名
